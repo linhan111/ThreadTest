@@ -49,5 +49,11 @@ public class ConcurrencyAndSerialTest {
         }
         System.out.println(" 串行所需时间：" + (System.currentTimeMillis() - start));
     }
+
+    // 减少上下文切换的方法有：无锁并发编程、cas算法、使用最少线程、使用协程
+    // 无锁并发编程：多线程竞争锁时，会引起上下文切换所以使用多线程处理数据时，可以使用一些方法来避免锁的使用，如将数据的id按照hash算法取模分段，不同的线程可以处理不同段的数据，典型应用有CurrencyHashMap.
+    // cas算法：Java的Atomic包使用cas算法来更新数据而不需要加锁
+    // 使用最少线程：避免创造不必要的线程，任务很少而创建了很多线程会使线程长时间处于等待状态
+    // 协程：在单线程中实现多任务的调度，并在单线程中维持多任务的切换
 }
 
