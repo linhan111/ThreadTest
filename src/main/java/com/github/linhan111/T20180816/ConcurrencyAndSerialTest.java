@@ -55,5 +55,6 @@ public class ConcurrencyAndSerialTest {
     // cas算法：Java的Atomic包使用cas算法来更新数据而不需要加锁
     // 使用最少线程：避免创造不必要的线程，任务很少而创建了很多线程会使线程长时间处于等待状态
     // 协程：在单线程中实现多任务的调度，并在单线程中维持多任务的切换
+    // 这是在work-vmware-deepin环境配置时的测试提交，基本开发环境测试通过后考虑将deepin做成双系统，在java开发中确实使用linux效率上有提升
 }
 
