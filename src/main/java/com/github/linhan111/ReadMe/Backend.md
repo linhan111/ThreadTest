@@ -2,7 +2,6 @@
 *test*
 - test
 // 相关比较好的blog：https://blog.csdn.net/Evankaka/article/details/44153709
-// 线程不安全实例：https://www.jianshu.com/p/e9815da45fe0
 // cpu时间片解释：https://blog.csdn.net/qq_32812243/article/details/50590104
  Thread sayHello=new Thread(new Runnable() {
             @Override
