@@ -1,5 +1,7 @@
 package com.github.linhan111.T20180816;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author lhan
  * @version 1.0.0
@@ -25,5 +27,12 @@ public class T20181027 {
         for (int i = 0; i < 10; i++) {
             new Thread(thread, "这里是自定义的线程名字").start();
         }
+
+
+        // ！！！！ ConcurrentHashMap
+        // 有能力去看下ConcurrentHashMap的基本实现原理，注意其分段加锁的实现，segment的结构等实现、jdk1.7和1.8的ConcurrentHashMap两个不同的实现
+        ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>(10);
+        concurrentHashMap.put("1", "2");
+        System.out.println(concurrentHashMap.size());
     }
 }

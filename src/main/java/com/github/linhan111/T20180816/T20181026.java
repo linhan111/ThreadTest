@@ -35,8 +35,13 @@ public class T20181026 {
         };
         thread.start();
     }
-    // 两种创建线程的方式都可以使用匿名内部类的方式结合lambda表达式来简化代码，推荐使用实现runnable接口的方式来使用线程，ali编码规范上推荐使用线程池的方式来代替手动创建线程
+    // 可见性关键字：volatile，同步关键字:synchronized！！！注意一下两者的使用场景（http://ifeve.com/volatile/）
+    // volatile与synchronized两者的区别：https://blog.csdn.net/zhang199416/article/details/68921960?utm_source=blogxgwz0
+    // 使用volatile时需要额外小心，volatile只保证可见性，而且volatile会禁止vm优化，对性能形象不小；
+    // volatile只能将每次修改值后将最新值写入内存能被其他线程立即获取到，但是不能保证是原子操作
 
+
+    // 两种创建线程的方式都可以使用匿名内部类的方式结合lambda表达式来简化代码，推荐使用实现runnable接口的方式来使用线程，ali编码规范上推荐使用线程池的方式来代替手动创建线程
 
     // 线程的可见性与有序性
     // 多个线程之间是不能直接传递数据进行交互的，它们之间的交互只能通过共享变量来实现。拿上面的例子来说明，在多个线程之间共享了Count类的一个实例，
