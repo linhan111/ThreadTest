@@ -52,3 +52,11 @@ cas算法：
     但是,这么高的争用程度并不常见,因为多数时候,线程会把线程本地的计算与争用共享数据的操作分开,从而给其他线程使用共享数据的机会。
     (这么高的争用程度也表明需要重新检查算法,朝着更少共享数据的方向努力。)“流行的原子” 中的图在这方面就有点儿让人困惑,因为被测量的程序中发生的争用极其密集,看起来即使对数量很少的线程,锁定也是更好的解决方案。
     备注：cas算法中基于汇编指令的操作，保证读取到最新的值并set修改的值为原子操作，这一步通过jni-native来实现 
+    存在的问题：cas算法一般会存在三个问题，aba问题，循环时间开销大（类似死循环）、只能保证一个共享变量的的原子操作
+    
+volatile: https://www.cnblogs.com/wq3435/p/6220751.html，https://www.cnblogs.com/zhengbin/p/5654805.html， 
+            volatile保证变量可见性，禁止指令重排，指令重排会造成的问题需要看一下：https://www.2cto.com/kf/201601/487117.html
+            
+java中的ReentrantLock的使用：https://blog.csdn.net/i_am_kop/article/details/80958856，注意这个可重入锁和synchronize的区别！
+Java中的ReadWriteLock（ReentrantReadWriteLock）的使用：https://blog.csdn.net/J080624/article/details/82790372，注意读写锁和互斥锁的区别，同时注意有参构造的入参，创建公平锁与非公平锁的区别
+    及公平锁与非公平锁的实现区别等，读写锁与synchronize的执行效率区别：https://blog.csdn.net/liuchuanhong1/article/details/53539341
