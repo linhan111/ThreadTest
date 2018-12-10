@@ -13,10 +13,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 测试SimpleDateFormat多线程情况下的问题
- *
+ * <p>
  * 原文链接：https://www.cnblogs.com/zuoxiaolong/p/con1.html
  * PS:注意评论区讨论的static变量对内存的影响及多线程情况下static变量的问题
- *
+ * <p>
  * SimpleDateFormat时间格式化的线程安全问题解析：https://www.cnblogs.com/zhuimengdeyuanyuan/archive/2017/10/25/7728009.html
  *
  * @author lhan
@@ -30,10 +30,10 @@ public class SimpleDateFormatParserTest {
 
 
     public static void main(String[] args) {
-        // 由阿里编码规范，线程池需要显示创建，方便阅读查错
+        // 由阿里编码规范，线程池需要显示创建，方便阅读查错，最多线程池中可存在400个线程？
         ExecutorService service = new ThreadPoolExecutor(100, 200, 10L,
                                                          TimeUnit.SECONDS,
-                                                         new LinkedBlockingDeque<Runnable>(),
+                                                         new LinkedBlockingDeque<>(200),
                                                          r -> new Thread(r, "test thread:" + ATOMIC_INTEGER.incrementAndGet()));
         for (int i = 0; i < 100; i++) {
             service.execute(() -> {
