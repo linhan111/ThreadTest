@@ -5,7 +5,7 @@ package com.github.linhan111.T20180816;
  * @version 1.0.0
  * @className StartAndRunTest
  * @date 18-12-10 下午4:40
- * @description
+ * @description Thread中run方法与start方法的区别，参考链接：https://www.cnblogs.com/whyalwaysme/p/4495959.html
  * @program ThreadTest
  */
 public class StartAndRunTest extends Thread {
@@ -27,7 +27,7 @@ public class StartAndRunTest extends Thread {
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
             }
             System.out.println(i);
             System.out.println(Thread.currentThread().getName());
