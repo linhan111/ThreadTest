@@ -15,7 +15,7 @@ public class LockConditionTest {
     static ReentrantLock lock = new ReentrantLock();
 
     /**
-     * 定义多个条件
+     * 定义多个条件控制不同线程的执行顺序（类似Object的wait与notify）
      */
     static Condition condition1 = lock.newCondition();
     static Condition condition2 = lock.newCondition();
@@ -32,6 +32,7 @@ public class LockConditionTest {
             try {
                 lock.lock();
                 for (int i = 0; i < 10; i++) {
+                    // 这里使用while代替if，每次线程都会去判断条件是否满足，参考：https://blog.csdn.net/qq_36974281/article/details/81951006
                     while (count % 3 != 0) {
                         condition1.await();
                     }
@@ -69,7 +70,6 @@ public class LockConditionTest {
     }
 
     static class runnable3 implements Runnable {
-
         @Override
         public void run() {
             try {
@@ -96,4 +96,6 @@ public class LockConditionTest {
         new Thread(new runnable2(), "线程2").start();
         new Thread(new runnable1(), "线程1").start();
     }
+
+    // 备注：Condition在jdk中的使用可查看阻塞队列源码，例如ArrayBlockingQueue等，源码解析：https://www.cnblogs.com/tjudzj/p/4454490.html
 }
