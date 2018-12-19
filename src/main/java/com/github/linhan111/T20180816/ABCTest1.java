@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @version 1.0.0
  * @className ABCTest1
  * @date 18-12-7 下午4:30
- * @description
+ * @description 这种循环打印abc的实现方式会多出很多次循环，对性能影响较大
  * @program ThreadTest
  */
 public class ABCTest1 {
@@ -16,9 +16,9 @@ public class ABCTest1 {
     private static int state = 0;
 
     public static void main(String[] args) {
-        new ThreadA().start();
-        new ThreadB().start();
         new ThreadC().start();
+        new ThreadB().start();
+        new ThreadA().start();
     }
 
     static class ThreadA extends Thread {

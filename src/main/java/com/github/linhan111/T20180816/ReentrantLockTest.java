@@ -19,7 +19,7 @@ public class ReentrantLockTest {
         System.out.println("当前Thread为：" + Thread.currentThread().getName());
         lock.lock();
         // ali编码推荐使用线程池来实现
-        new Thread(new SignalThread()).start();
+        new Thread(new SignalThread(), "测试线程").start();
         try {
             System.out.println("主线程等待通知");
             condition.await();

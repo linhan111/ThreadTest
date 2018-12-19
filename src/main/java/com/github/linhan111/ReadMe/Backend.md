@@ -36,7 +36,7 @@
 3、基于上面的两种思路，下面便是3种实施方案：
 
 1. 多实例、或者是多副本（ThreadLocal）：对应着思路2，ThreadLocal可以为每个线程的维护一个私有的本地变量，可参考java线程副本–ThreadLocal；
-2. 使用锁机制 synchronize、lock方式：为资源加锁，可参考我写的一系列文章；
+2. 使用锁机制 synchronize、lock方式：为资源加锁
 3. 使用 java.util.concurrent 下面的类库：有JDK提供的线程安全的集合类
 
 可能说的还不太清楚，更新一下，以及给出一个线程安全模拟的例子：

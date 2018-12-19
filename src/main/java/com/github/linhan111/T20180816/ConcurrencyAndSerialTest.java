@@ -19,19 +19,15 @@ public class ConcurrencyAndSerialTest {
     private static void concurrency() throws InterruptedException {
         // 记录线程开始时间
         long startTime = System.currentTimeMillis();
-        // 新开一个线程去执行（阿里编码手册上建议使用线程池的方式来创建线程！）
+        // 新开一个线程去执行（建议使用线程池的方式来创建线程！）
         Thread thread = new Thread(() -> {
-            int a = 0;
             for (int i = 0; i < count; i++) {
-                a += 5;
             }
         });
         thread.start();
-        int b = 0;
         for (int i = 0; i < count; i++) {
-            b--;
         }
-        // 新开的thread线程执行完成后再执行主线程
+        // 新开的thread线程执行完成后再执行主线程（保证新开的线程执行完成）
         thread.join();
         long time = System.currentTimeMillis() - startTime;
         System.out.println("并行所需时间：" + time);
@@ -39,13 +35,9 @@ public class ConcurrencyAndSerialTest {
 
     private static void serial() throws InterruptedException {
         long start = System.currentTimeMillis();
-        int a = 0;
         for (int i = 0; i < count; i++) {
-            a += 5;
         }
-        int b = 0;
         for (int i = 0; i < count; i++) {
-            b--;
         }
         System.out.println(" 串行所需时间：" + (System.currentTimeMillis() - start));
     }

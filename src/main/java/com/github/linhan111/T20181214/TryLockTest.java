@@ -14,12 +14,18 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TryLockTest {
     private static ReentrantLock lock = new ReentrantLock();
 
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++) {
+            new Thread(new runnable(), "Thread-" + i).start();
+        }
+    }
+
     static class runnable implements Runnable {
         @Override
         public void run() {
             try {
                 if (lock.tryLock(2000, TimeUnit.MILLISECONDS)) {
-                    System.out.println("当前获取到锁的线程为：" + Thread.currentThread().getName());
+                    System.out.println("当前获取锁的线程为：" + Thread.currentThread().getName());
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
@@ -33,12 +39,6 @@ public class TryLockTest {
             } catch (InterruptedException e) {
                 System.out.println("tryLock发生异常，e={}" + e.getMessage());
             }
-        }
-    }
-
-    public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            new Thread(new runnable(), "Thread-" + i).start();
         }
     }
 }

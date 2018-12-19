@@ -16,7 +16,7 @@ public class StartAndRunTest extends Thread {
         t1.run();
         t2.run();
         // 每个线程在一个单独的调用堆栈中启动
-        // 这里注意run方法与start方法的区别，使用run方法不会新开线程执行，在主线程调用run()方法，run()方法进入当前调用堆栈而不是新调用堆栈的开头（）
+        // 这里注意run方法与start方法的区别，使用run方法不会新开线程执行，相当于在主线程中调用run()方法，run()方法进入当前调用堆栈而不是新调用堆栈的开头（）
         // t1.run();
         // t2.run();
     }

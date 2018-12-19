@@ -30,7 +30,7 @@ public class SimpleDateFormatParserTest {
 
 
     public static void main(String[] args) {
-        // 由阿里编码规范，线程池需要显示创建，方便阅读查错，最多线程池中可存在400个线程？
+        // 由阿里编码规范，线程池需要显示创建，方便阅读查错，最多线程池中可存在400个线程
         ExecutorService service = new ThreadPoolExecutor(100, 200, 10L,
                                                          TimeUnit.SECONDS,
                                                          new LinkedBlockingDeque<>(200),
