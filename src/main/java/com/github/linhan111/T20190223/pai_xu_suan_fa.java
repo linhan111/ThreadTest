@@ -52,15 +52,16 @@ public class pai_xu_suan_fa {
                     minIndex = j;
                 }
             }
-            int temp = array[minIndex];
-            array[minIndex] = array[i];
-            array[i] = temp;
+            int temp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = temp;
         }
         return array;
     }
 
     public static void main(String[] args) {
         int[] test = new int[]{1, 1000, 45, 6, 234, 678, 100};
+        // selection_sort(test).sout可在idea中直接打印出执行结果
         // System.out.println(bubble_sort(test));
         System.out.println(selection_sort(test));
     }
