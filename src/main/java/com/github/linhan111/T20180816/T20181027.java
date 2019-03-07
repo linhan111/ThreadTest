@@ -15,7 +15,6 @@ public class T20181027 {
         Runnable runnable = () -> System.out.println("线程名为：" + Thread.currentThread().getName()
                                                              + "线程优先级为：" + Thread.currentThread().getPriority());
         for (int i = 0; i < 10; i++) {
-            // ali编码规范推荐使用线程池来代替显式创建线程
             new Thread(runnable).start();
             // 注意这里run方法调用的输出，run方法是当前线程调用，不会启用创建的线程
             new Thread(runnable).run();

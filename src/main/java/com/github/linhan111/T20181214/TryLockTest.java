@@ -24,6 +24,8 @@ public class TryLockTest {
         @Override
         public void run() {
             try {
+                // 假定同时开启十个线程模拟并发情况，在十个线程中，获取锁的等待时间最大为2000毫秒，第一个线程进来休眠300毫秒，那个这种情况下最多只能4个线程能获取锁
+                // 使用场景：在已知业务代码大致执行时间后，可硬编码的方式控制该接口的并发量，硬编码的方式优劣都有，自己分析吧
                 if (lock.tryLock(2000, TimeUnit.MILLISECONDS)) {
                     System.out.println("当前获取锁的线程为：" + Thread.currentThread().getName());
                     try {

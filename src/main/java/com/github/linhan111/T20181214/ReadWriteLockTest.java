@@ -21,10 +21,10 @@ public class ReadWriteLockTest {
         System.out.println("blocking");*/
 
         // 锁降级，在未释放写锁情况下申请获取读锁，支持锁降级
-        ReentrantReadWriteLock rtLock1 = new ReentrantReadWriteLock();
-        rtLock1.writeLock().lock();
-        System.out.println("get write Lock");
-        rtLock1.readLock().lock();
+        ReentrantReadWriteLock rtLock = new ReentrantReadWriteLock();
+        rtLock.writeLock().lock();
+        System.out.println("get write lock");
+        rtLock.readLock().lock();
         System.out.println("get read lock");
     }
 }

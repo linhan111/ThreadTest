@@ -23,6 +23,7 @@ public class FutureTest {
     public static void main(String[] args) throws Exception {
         long q = System.currentTimeMillis();
         Thread.sleep(2000);
+        // 线程池处理耗时任务，那么这段代码执行耗时为：串行代码执行时间+新开线程jvm产生的耗时
         executorService.execute(() -> {
             try {
                 Thread.sleep(3000);
@@ -30,6 +31,14 @@ public class FutureTest {
                 e.printStackTrace();
             }
         });
+        // 如果26-32行改成如下形式，使用submit后调用get方法会等待执行结果，这种情况的时间消耗为：串行时间+新开线程返回结果的耗时+开线程等jvm产生的耗时
+        /*executorService.submit(() -> {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).get();*/
         System.out.println("耗时为：" + (System.currentTimeMillis() - q));
     }
 }
