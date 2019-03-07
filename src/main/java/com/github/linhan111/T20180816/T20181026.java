@@ -34,6 +34,9 @@ public class T20181026 {
             }
         };
         thread.start();
+
+        // 30-36行代码可直接简化为如下代码：
+        new Thread(() -> System.out.println("Thread Running.")).start();
     }
     // 可见性关键字：volatile，同步关键字:synchronized！！！注意一下两者的使用场景（http://ifeve.com/volatile/）
     // volatile与synchronized两者的区别：https://blog.csdn.net/zhang199416/article/details/68921960?utm_source=blogxgwz0

@@ -42,7 +42,7 @@ public class SimpleDateFormatParserTest {
                         Thread.sleep(1000L);
                         // SimpleDateFormat由类注释409行可以看出是未同步的，多线程情况下需要在外部进行同步或每个线程一个实例
                         // 以下代码多线程环境下会产生问题
-                        /// SIMPLE_DATE_FORMAT.parse("2018-08-15 10:10:10");
+                        // SIMPLE_DATE_FORMAT.parse("2018-08-15 10:10:10");
                         new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2018-08-15 10:10:10");
                         System.out.println(Thread.currentThread().getName());
                         // 如果把上面的代码换成如下代码，则系统输出在多线程情况下大概率会产生问题，有些线程会报错，有些线程的输出错乱等
