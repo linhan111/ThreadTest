@@ -12,7 +12,8 @@ public class ThreadJoinTest {
     public volatile static int i = 0;
 
     public static void main(String[] args) throws InterruptedException {
-        Thread t1 = new Thread(() -> {
+        // 测试Thread中的join方法
+        /*Thread t1 = new Thread(() -> {
             // for (int i = 0; i < 10; i++); 如果这里是使用的局部变量，那最后的输出就为0
             for (i = 0; i < 10; i++) {
                 // System.out.println(i);
@@ -20,6 +21,13 @@ public class ThreadJoinTest {
         });
         t1.start();
         t1.join();
-        System.out.println(i);
+        System.out.println(i);*/
+
+        // 创建Thread数组
+        Thread[] x = new Thread[10];
+        for (int j = 0; j < 10; j++) {
+            x[j] = new Thread(() -> System.out.println(Thread.currentThread().getName()));
+            x[j].start();
+        }
     }
 }
