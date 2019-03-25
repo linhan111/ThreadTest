@@ -12,6 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @program ThreadTest
  */
 public class ReentrantLockTest {
+    // ReentrantLock实现原理简析：https://zhuanlan.zhihu.com/p/54297968?utm_source=wechat_session&utm_medium=social&utm_oi=772449073763450880
     static ReentrantLock lock = new ReentrantLock();
     static Condition condition = lock.newCondition();
 
