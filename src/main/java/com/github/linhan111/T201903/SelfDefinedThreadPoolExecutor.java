@@ -39,7 +39,15 @@ public class SelfDefinedThreadPoolExecutor {
             }
         };
         for (int i = 0; i < 5; i++) {
-            xz.submit(() -> System.out.println("这是线程池的任务"));
+            xz.submit(() -> {
+                try {
+                    System.out.println("这是线程池的任务");
+                } catch (Exception e) {
+                    // 异常捕获后打印堆栈，之后再抛出异常终止当前线程的运行
+                    e.printStackTrace();
+                    throw e;
+                }
+            });
         }
     }
 }
