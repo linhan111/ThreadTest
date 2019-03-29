@@ -22,7 +22,7 @@ public class ThreadInterrupt {
         t1.start();
         System.out.println("设置子线程的中断状态为已中断");
         t1.interrupt();
+        System.out.println(Thread.interrupted());
     }
-
-    // 每个线程都有一个中断标志位
+    // 每个线程都有一个中断标志位，但是只有线程为waiting或者time_waiting状态时设置线程中断状态为true时才会抛出InterruptedException
 }
