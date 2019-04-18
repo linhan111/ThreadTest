@@ -4,6 +4,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * 测试有界队列ArrayBlockingQueue使用，主要是两个生产者和消费者谁先启动的问题，是队列装满了才启动消费者还是放入元素就开始消费还是多线程的不确定性，两者都有可能
+ * @see java.util.concurrent.LinkedBlockingQueue 的使用，无界队列与有界队列
+ * 备注：在分布式系统中，锁-队列为了保证程序正常运行都应该被替换为分布式系统中可用的锁与队列（都可用redis实现-对redis的HA属性有要求了）
  */
 public class ArrayBlockingQueueTest {
     // 生产者开10个线程，消费者开5个线程，此时队列长度对生产-消费模型有决定性作用。
