@@ -15,7 +15,8 @@ import java.util.concurrent.*;
 public class FutureTest {
 
     private static final ExecutorService executorService = new ThreadPoolExecutor(3, 10, 3L, TimeUnit.SECONDS,
-                                                                           new LinkedBlockingQueue<>(20), new ThreadFactoryBuilder().setNameFormat("test-%d").build());
+                                                                                  new LinkedBlockingQueue<>(20),
+                                                                                  new ThreadFactoryBuilder().setNameFormat("test-%d").build());
 
     public static void main(String[] args) throws Exception {
         long q = System.currentTimeMillis();
@@ -39,6 +40,7 @@ public class FutureTest {
             Thread.sleep(3000);
             return "";
         }).get();
+        // 若在get方法中指定了等待时间，则在等待时间结束后还未能拿到结果会抛出timeoutException，不影响后续流程的话可以使用catch抓住
 
         System.out.println("耗时为：" + (System.currentTimeMillis() - p));
     }
