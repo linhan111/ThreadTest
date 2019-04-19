@@ -3,7 +3,7 @@ package com.github.linhan111.leetcode;
 /**
  * 问题描述：两数之和，https://leetcode-cn.com/explore/learn/card/array-and-string/201/two-pointer-technique/785/
  */
-public class Solution {
+public class twoSum {
 
     public static void main(String[] args) {
         System.out.println(twoSum1(new int[]{0, 1, 9, 10}, 100));
