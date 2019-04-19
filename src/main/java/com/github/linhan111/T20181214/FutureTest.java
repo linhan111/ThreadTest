@@ -2,10 +2,7 @@ package com.github.linhan111.T20181214;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author lhan
@@ -31,14 +28,18 @@ public class FutureTest {
                 e.printStackTrace();
             }
         });
-        // 如果26-32行改成如下形式，使用submit后调用get方法会等待执行结果，这种情况的时间消耗为：串行时间+新开线程返回结果的耗时+开线程等jvm产生的耗时
-        /*executorService.submit(() -> {
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).get();*/
         System.out.println("耗时为：" + (System.currentTimeMillis() - q));
+
+
+        long p = System.currentTimeMillis();
+        Thread.sleep(2000);
+        // 如果上面改成如下形式，使用submit后调用get方法会等待执行结果，这种情况的时间消耗为：串行时间+新开线程执行的耗时+开线程等jvm产生的耗时
+        // 因为调用了Future.get()方法会使当前线程等待执行结果，所以效率还不如串行执行
+        executorService.submit(() -> {
+            Thread.sleep(3000);
+            return "";
+        }).get();
+
+        System.out.println("耗时为：" + (System.currentTimeMillis() - p));
     }
 }
