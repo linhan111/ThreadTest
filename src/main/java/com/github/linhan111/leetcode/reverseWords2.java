@@ -7,11 +7,13 @@ public class reverseWords2 {
     public static void main(String[] args) {
         reverseWords2("Let's take LeetCode contest");
     }
+
     private static String reverseWords2(String s) {
         String[] words = s.split(" ");
         StringBuilder builder1 = new StringBuilder();
         for (int i = 0; i < words.length; i++) {
             StringBuilder builder2 = new StringBuilder(words[i].length());
+            // 翻转，可通过双指针或这种方式，具体取决于内存及效率等
             for (int j = words[i].toCharArray().length - 1; j >= 0; j--) {
                 builder2.append(words[i].toCharArray()[j]);
             }
