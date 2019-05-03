@@ -1,4 +1,4 @@
-package com.github.linhan111.T20180816;
+package com.github.linhan111.T201808;
 
 /**
  * 测试串行和并行两者情况的耗时区别
