@@ -16,7 +16,7 @@ public class removeDuplicates {
         }
         int result = 1;
         for (int i = 0; i < nums.length - 1; i++) {
-            // 注意有序数组的条件，只需要比较后一个，加上双指针
+            // 注意有序数组的条件，只需要比较后一个，加上双指针使用
             if (nums[i] != nums[i + 1]) {
                 nums[result] = nums[i + 1];
                 result += 1;
