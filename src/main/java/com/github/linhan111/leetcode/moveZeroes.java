@@ -5,5 +5,22 @@ package com.github.linhan111.leetcode;
  * 问题详情：https://leetcode-cn.com/explore/learn/card/array-and-string/202/conclusion/796/
  */
 public class moveZeroes {
-    // 遍历数组，每次遇到0就将交换0与后一个元素的位置（后一个元素非0），类似于冒泡的形式
+    public static void main(String[] args) {
+        moveZeroes(new int[] {1,2,0,1,0});
+    }
+
+    private static void moveZeroes(int[] nums) {
+        int k = 0;
+        // 思路：非零元素前移，完毕后非零元素末尾添加0
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+        while (k < nums.length) {
+            nums[k] = 0;
+            k++;
+        }
+    }
 }
