@@ -13,6 +13,7 @@ public class moveZeroes {
         int k = 0;
         // 思路：非零元素前移，完毕后非零元素末尾添加0
         for (int i = 0; i < nums.length; i++) {
+            // 这里类似于双指针思路，两个index，一个根据迭代往后走，一个满足条件再往后走，达到交换两个元素的目的
             if (nums[i] != 0) {
                 nums[k] = nums[i];
                 k++;
