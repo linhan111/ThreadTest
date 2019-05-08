@@ -5,10 +5,6 @@ package com.github.linhan111.leetcode;
  * 问题详情：https://leetcode-cn.com/explore/learn/card/array-and-string/202/conclusion/796/
  */
 public class moveZeroes {
-    public static void main(String[] args) {
-        moveZeroes(new int[] {1,2,0,1,0});
-    }
-
     private static void moveZeroes(int[] nums) {
         int k = 0;
         // 思路：非零元素前移，完毕后非零元素末尾添加0
