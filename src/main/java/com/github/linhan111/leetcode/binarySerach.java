@@ -1,5 +1,6 @@
 package com.github.linhan111.leetcode;
 
+// 二分查找，未完成，注意理解原理
 public class binarySerach {
     private static int binarySerach(int[] array, int key) {
         int left = 0;
