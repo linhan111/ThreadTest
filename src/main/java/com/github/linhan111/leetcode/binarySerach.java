@@ -24,4 +24,8 @@ public class binarySerach {
         }
         return -1;
     }
+
+    public static void main(String[] args) {
+        System.out.println(binarySerach(new int[] {1,2,3,5,6,7,10}, 4));
+    }
 }
