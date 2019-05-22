@@ -12,6 +12,10 @@ public class binarySerach {
 
         // 注意这里的<=逻辑
         while (left <= right) {
+            // 这里加上对最大元素的判断，在每次遍历时最大元素都小于target直接跳出循环节省时间
+            if (nums[right] < target) {
+                return -1;
+            }
             // 防止精度丢失
             int mid = left + (right - left) / 2;
             if (nums[mid] == target) {
