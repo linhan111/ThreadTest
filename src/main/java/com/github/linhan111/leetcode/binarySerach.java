@@ -30,6 +30,9 @@ public class binarySerach {
     }
 
     public static void main(String[] args) {
+        // 原来jdk里面有现成的实现！！！ 可以参考下逻辑，Arrays.binarySearch()，jdk里面的实现除以2的操作通过无符号右移1位来实现的（>>>），具体位运算参考如下：
+        // https://www.cnblogs.com/hongten/p/hongten_java_yiweiyunsuangfu.html
+        // 位运算里面注意无符号移和有符号移，真特喵全还给老师了。。。我理解的是对于正数，是否有符号移动结果是一样的？
         System.out.println(binarySerach(new int[] {1,2,3,5,6,7,10}, 4));
     }
 }
