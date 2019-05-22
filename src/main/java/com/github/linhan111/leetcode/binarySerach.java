@@ -1,7 +1,7 @@
 package com.github.linhan111.leetcode;
 
 /**
- * 问题描述：https://leetcode-cn.com/explore/learn/card/binary-search/208/background/833/
+ * 问题描述：有序数组的二分查找，https://leetcode-cn.com/explore/learn/card/binary-search/208/background/833/
  * 个人理解：二分查找需要给定数组有序，乱序不适用二分查找，可先排序后使用二分查找，排序可参考排序算法部分，注意时间/空间复杂度
  * 二分查找时间复杂度为：O(log2n) ，对比其他方法时间复杂度较低，对于乱序数组等可先选择时间复杂度相对低的算法排序后使用二分查找
  */
@@ -10,7 +10,7 @@ public class binarySerach {
         int left = 0;
         int right = nums.length - 1;
 
-        // 注意这里的<=逻辑
+        // 注意这里的<=逻辑，不加=则 int[]为[1]，target = 1的情况得不到预期结果
         while (left <= right) {
             // 这里加上对最大元素的判断，在每次遍历时最大元素都小于target直接跳出循环节省时间
             if (nums[right] < target) {
