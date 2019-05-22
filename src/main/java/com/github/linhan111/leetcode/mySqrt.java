@@ -18,6 +18,7 @@ public class mySqrt {
                 right = mid;
             }
         }
+        // 舍弃小数部分，则取得刚好大于target的值减一
         return right - 1;
     }
 
