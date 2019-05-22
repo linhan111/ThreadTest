@@ -1,18 +1,22 @@
 package com.github.linhan111.leetcode;
 
-// 二分查找，未完成，注意理解原理
+/**
+ * 问题描述：https://leetcode-cn.com/explore/learn/card/binary-search/208/background/833/
+ * 个人理解：二分查找需要给定数组有序，乱序不适用二分查找，可先排序后使用二分查找，排序可参考排序算法部分，注意时间/空间复杂度
+ * 二分查找时间复杂度为：O(log2n) ，对比其他方法时间复杂度较低，对于乱序数组等可先选择时间复杂度相对低的算法排序后使用二分查找
+ */
 public class binarySerach {
-    private static int binarySerach(int[] array, int key) {
+    private static int binarySerach(int[] nums, int target) {
         int left = 0;
-        int right = array.length - 1;
+        int right = nums.length - 1;
 
         // 注意这里的<=逻辑
         while (left <= right) {
             // 防止精度丢失
             int mid = left + (right - left) / 2;
-            if (array[mid] == key) {
+            if (nums[mid] == target) {
                 return mid;
-            } else if (array[mid] < key) {
+            } else if (nums[mid] < target) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
