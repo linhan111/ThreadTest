@@ -16,8 +16,10 @@ public class binarySerach2 {
             if (nums[mid] == target) return mid;
             // 如果数组中间的元素大于最左边的元素，说明left到mid这个区间内顺序是正常的升序
             if (nums[mid] >= nums[left]) {
+                // 若target在[left,mid)范围内，则在[left,mid]范围内二分查找
                 if (target >= nums[left] && target < nums[mid]) {
                     right = mid - 1;
+                    // 若target不在[left,mid)范围内，则在(mid,right]中二分查找
                 } else {
                     left = mid + 1;
                 }
