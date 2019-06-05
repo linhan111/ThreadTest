@@ -6,7 +6,7 @@ package com.github.linhan111.leetcode;
  * 解题思路：https://blog.csdn.net/qq_17550379/article/details/83339465
  *         https://www.cnblogs.com/keeya/p/9689927.html
  */
-public class binarySerach2 {
+public class binarySearch2 {
     private static int search(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
