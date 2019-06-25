@@ -39,5 +39,6 @@ public class binarySearch2 {
         System.out.println(search(new int[] {4,5,6,7,0,1,2}, 0));
         System.gc();
         // idea中打开gc日志可配置在application的vm参数中或修改idea的配置文件，针对每个app都使用
+        // 测试同一个ssh key使用不同用户push 代码
     }
 }
