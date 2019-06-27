@@ -47,7 +47,8 @@ public class binarySearch2 {
 //        -Xmn10M
 //        -XX:SurvivorRatio=2
 //        -XX:+PrintGCDetails
-//        -XX:+PrintGCDateStamps
+//        -XX:+PrintGCDateStamps(PrintGCTimeStamps该时间戳表示jvm启动了多长时间，DateStamps表示绝对时间)
 //        -XX:+PrintCommandLineFlags
+//        相关启动参数可参考：https://www.cnblogs.com/chanshuyi/p/jvm_serial_14_jvm_param_gc_log.html
     }
 }
