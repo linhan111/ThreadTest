@@ -40,5 +40,14 @@ public class binarySearch2 {
         System.gc();
         // idea中打开gc日志可配置在application的vm参数中或修改idea的配置文件，针对每个app都使用
         // 测试同一个ssh key使用不同用户push 代码
+
+        // jvm 启动参数为：
+//        -Xms20m
+//        -Xmx20m
+//        -Xmn10M
+//        -XX:SurvivorRatio=2
+//        -XX:+PrintGCDetails
+//        -XX:+PrintGCDateStamps
+//        -XX:+PrintCommandLineFlags
     }
 }
