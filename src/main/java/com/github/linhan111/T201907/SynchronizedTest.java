@@ -3,6 +3,9 @@ package com.github.linhan111.T201907;
 /**
  * 测试sync关键字作用在class/this/object上的区别
  * 参考链接：https://blog.csdn.net/luckey_zh/article/details/53815694
+ *          下面这两篇blog需要好好看看，讲解的很清楚
+ *          https://www.cnblogs.com/huansky/p/8869888.html
+ *          https://juejin.im/post/594a24defe88c2006aa01f1c
  */
 public class SynchronizedTest {
 
