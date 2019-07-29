@@ -1,7 +1,5 @@
 package com.github.linhan111.T201907;
 
-import java.math.BigDecimal;
-
 public class ThreadLocalTest {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
@@ -35,5 +33,4 @@ public class ThreadLocalTest {
         BigDecimal x1 = new BigDecimal(b1.intValue());
         System.out.println(x1.equals(b1));
     }*/
-
 }
