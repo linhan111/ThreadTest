@@ -14,7 +14,7 @@ public class MultiThreadInPoolTest {
             new LinkedBlockingQueue<>(20),
             new ThreadFactoryBuilder().setNameFormat("test-%d").build());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         long startTime = System.currentTimeMillis();
 
         Future<String> result1 = executorService.submit(() -> {
