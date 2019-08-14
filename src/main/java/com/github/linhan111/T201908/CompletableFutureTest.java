@@ -18,13 +18,15 @@ public class CompletableFutureTest {
         long start = System.currentTimeMillis();
         CompletableFuture<String> result1 = CompletableFuture.supplyAsync(() -> {
             try {
+                System.out.println(1/0);
                 Thread.sleep(1000);
                 return "get result1 complete";
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             return "this is new thread's sout.";
-        }, executorService);
+        }, executorService).exceptionally(Throwable::getMessage);
+        // 上面一句代码，如果抛出异常，且后续使用join获取执行结果，则异常会打印且中断主线程，可使用exceptionally来处理子线程中的异常而不对主线程产生影响
 
         CompletableFuture<String> result2 = CompletableFuture.supplyAsync(() -> {
             try {
@@ -37,8 +39,9 @@ public class CompletableFutureTest {
         }, executorService);
         CompletableFuture.allOf(result1, result2);
         // 如果这里需要获取执行结果，则阻塞主线程，阻塞时间是最长的执行时间
-//        System.out.println(result1.join());
-//        System.out.println(result2.join());
+        System.out.println(result1.join());
+        System.out.println(result2.join());
+        // 注意获取执行结果的join和get方法的区别，get方法的方法声明会抛出异常，需要异常捕捉，join方法隐式抛出异常，存在异常直接中断主线程执行
         System.out.println("总耗时：" + (System.currentTimeMillis() - start));
     }
 }
