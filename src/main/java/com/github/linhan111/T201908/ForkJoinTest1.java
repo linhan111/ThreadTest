@@ -91,20 +91,10 @@ public class ForkJoinTest1 {
                 return new ArrayList<>();
             }
         }
-
-        /*private void function(int i) {
-            try {
-                System.out.println("Thread:" + Thread.currentThread().getId() + ", i= " + i);
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
-        // 考虑下如果Fork-join任务中存在对集合的并发写如何处理？
+        // 考虑下如果Fork-join任务中存在对集合的并发写如何处理？使用并发安全集合，ConcurrentHashMap等
+        // 但是为什么没有线程安全的List，可以参考：http://ifeve.com/why-is-there-not-concurrent-arraylist-in-java-util-concurrent-package/
         // 答：在每个子任务处理中返回集合，最后合并的时候合并所有集合，不会有线程安全问题，且由于ForkJoinPool的初始化时默认为LIFO_QUEUE模式，则各个线程返回的集合可认为是有序的，
 
         // FIXME 如这个例子中最后合并的List中是0-49的有序集合，需要分析下原理
-
-        // 注意执行过程中的异常处理！！！
     }
 }
