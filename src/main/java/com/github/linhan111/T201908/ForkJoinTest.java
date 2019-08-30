@@ -27,8 +27,7 @@ public class ForkJoinTest {
         for (Integer integer : list) {
             try {
                 Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            } catch (InterruptedException ignore) {
             }
             baseResult += integer;
         }

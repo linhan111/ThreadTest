@@ -62,6 +62,11 @@ public class ForkJoinTest1 {
                     for (int i = start; i < end; i++) {
                         // function(i);
                         try {
+                            if(start == 20) {
+                                // 使用fort-join进行排序：https://blog.csdn.net/yinwenjie/article/details/71915811
+                                // FIXME !!! 为什么指定一个任务耗时，返回结果仍然是有序的？？
+                                Thread.sleep(1000 + new Random().nextInt(100));
+                            }
                             // FIXME 为什么这里不同worker线程休眠不同时间，并行结果仍是有序的？！！1
                             Thread.sleep(100 + new Random().nextInt(100));
                         } catch (InterruptedException e) {
