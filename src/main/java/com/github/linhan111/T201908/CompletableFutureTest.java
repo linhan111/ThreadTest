@@ -1,18 +1,30 @@
 package com.github.linhan111.T201908;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * CompletableFuture的使用
  * 详见：https://www.cnblogs.com/fingerboy/p/9948736.html
  * @author lhan111
  */
+@Slf4j
 public class CompletableFutureTest {
     private static final ExecutorService executorService = new ThreadPoolExecutor(3, 10, 3L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(20),
-            new ThreadFactoryBuilder().setNameFormat("test-%d").build());
+            new ThreadFactoryBuilder().setNameFormat("test-%d")
+                    .setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+                        @Override
+                        public void uncaughtException(Thread t, Throwable e) {
+                            System.out.println("catch exception, thread info: " + t.getName() + ", throwable info:" + e.getMessage());
+                        }
+                    }).build());
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
