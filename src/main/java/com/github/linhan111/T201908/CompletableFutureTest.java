@@ -1,7 +1,6 @@
 package com.github.linhan111.T201908;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -14,7 +13,6 @@ import java.util.concurrent.TimeUnit;
  * 详见：https://www.cnblogs.com/fingerboy/p/9948736.html
  * @author lhan111
  */
-@Slf4j
 public class CompletableFutureTest {
     private static final ExecutorService executorService = new ThreadPoolExecutor(3, 10, 3L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(20),
