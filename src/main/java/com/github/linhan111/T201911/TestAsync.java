@@ -2,7 +2,6 @@ package com.github.linhan111.T201911;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
-import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -18,13 +17,15 @@ public class TestAsync {
             new LinkedBlockingQueue<>(20),
             new ThreadFactoryBuilder().setNameFormat("test-%d").build());
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         System.out.println(test());
         CompletableFuture.runAsync(() -> {
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                // 如果抛出InterruptedException，应该将当前线程状态修改为interrupt
+                Thread.currentThread().interrupt();
             }
             for (int i = 0; i < 3; i++) {
                 if (i == 2) {
