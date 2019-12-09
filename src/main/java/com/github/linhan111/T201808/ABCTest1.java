@@ -16,14 +16,7 @@ public class ABCTest1 {
     private static int state = 0;
 
     public static void main(String[] args) {
-        new ThreadC().start();
-        new ThreadB().start();
-        new ThreadA().start();
-    }
-
-    static class ThreadA extends Thread {
-        @Override
-        public void run() {
+        new Thread(() -> {
             for (int i = 0; i < 10; ) {
                 try {
                     lock.lock();
@@ -36,12 +29,10 @@ public class ABCTest1 {
                     lock.unlock(); // lock()和unlock()操作结合try/catch使用
                 }
             }
-        }
-    }
 
-    static class ThreadB extends Thread {
-        @Override
-        public void run() {
+        }).start();
+
+        new Thread(() -> {
             for (int i = 0; i < 10; ) {
                 try {
                     lock.lock();
@@ -51,15 +42,13 @@ public class ABCTest1 {
                         i++;
                     }
                 } finally {
-                    lock.unlock();
+                    lock.unlock(); // lock()和unlock()操作结合try/catch使用
                 }
             }
-        }
-    }
 
-    static class ThreadC extends Thread {
-        @Override
-        public void run() {
+        }).start();
+
+    new Thread(() -> {
             for (int i = 0; i < 10; ) {
                 try {
                     lock.lock();
@@ -72,6 +61,7 @@ public class ABCTest1 {
                     lock.unlock();
                 }
             }
-        }
+
+        }).start();
     }
 }
