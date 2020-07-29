@@ -1,5 +1,10 @@
 package com.github.linhan111.T201907;
 
+/**
+ * InheritableThreadLocal：子线程可获取父线程的ThreadLocal值，详见：
+ * https://www.cnblogs.com/sweetchildomine/p/6575666.html
+ * ThreadLocal原理：https://mp.weixin.qq.com/s/LzkZXPtLW2dqPoz3kh3pBQ
+ */
 public class ThreadLocalTest {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
