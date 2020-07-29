@@ -27,7 +27,7 @@ public class MergeSortTest {
     private static int[] sort(int[] arr, int left, int right) {
         // mid是作为分割的指针
         int mid = (left + right) / 2;
-        // 递归拆分，调用归并（这里是关键，需要好好思考）
+        // FIXME 递归拆分，调用归并（这里是关键，需要好好思考）
         if (left < right) {
             sort(arr, left, mid);
             sort(arr, mid + 1, right);

@@ -17,6 +17,14 @@ public class ThreadLocalTest {
             System.out.println(newThreadLocal.get());
 //            threadLocal.remove();
         }).start();
+
+        // 这里还是会输出'this ist test'，原因是ThreadLocal的set是根据线程来关联的，不同线程不影响，但是相同线程会覆盖
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(threadLocal.get());
     }
 
     // 注意ThreadLocal的内存溢出问题，WeakReference中的key-value，value保持了一个强引用，
