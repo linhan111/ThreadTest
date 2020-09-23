@@ -8,11 +8,15 @@ package com.github.linhan111.T201907;
 public class ThreadLocalTest {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
+    // 为什么Thread中threadLocals变量是一个Map？因为同一个Thread可以关联多个ThreadLocal变量，即同一个线程中可以设置多个ThreadLocal的值
+    private static ThreadLocal<String> otherThreadLocal = new ThreadLocal<>();
+
     public static void main(String[] args) {
         threadLocal.set(Thread.currentThread().getName());
         // key为当前thread，value为set的值，会覆盖，注意ThreadLocalMap中的Entry保持的是和当前线程的WeakReference，方便gc
         threadLocal.set("this is test");
         System.out.println(threadLocal.get());
+        otherThreadLocal.set("sdfsd");
 
         new Thread(() -> {
             ThreadLocal<String> newThreadLocal = new ThreadLocal<>();
