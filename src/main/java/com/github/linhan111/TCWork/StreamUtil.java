@@ -17,6 +17,12 @@ import java.util.stream.Collectors;
  * @since 2021-01-04
  */
 public class StreamUtil {
+
+    public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+        Set<Object> words = Sets.newConcurrentHashSet();
+        return t -> words.add(keyExtractor.apply(t));
+    }
+
     /**
      * 自定义Predicate来过滤List
      *
@@ -57,6 +63,14 @@ public class StreamUtil {
 
     public static void main(String[] args) {
         List<String> x = Arrays.asList("1", "2", "3", "3");
+        GlobalEntity entity1 = new GlobalEntity("1", "1", 1);
+        GlobalEntity entity2 = new GlobalEntity("2", "2", 2);
+        GlobalEntity entity3 = new GlobalEntity("3", "3", 3);
+        GlobalEntity entity4 = new GlobalEntity("3", "3", 4);
+        List<GlobalEntity> list = Arrays.asList(entity1, entity2, entity3, entity4);
+        System.out.println(filterListByCustomPredicate(list, globalEntity -> "1".equals(globalEntity.getField1())));
+        System.out.println(list.stream().filter(distinctByKey(GlobalEntity::getField1)).collect(Collectors.toList()));
+        System.out.println(otherDistinctByKey(list, p -> p.getField1() + p.getField2()));
         System.out.println(otherDistinctByKey(x, p -> p));
         System.out.println(compute(4, 5, (a, b) -> a * b, a -> a + 2));
     }
