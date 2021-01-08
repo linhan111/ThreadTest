@@ -49,7 +49,7 @@ public class StreamUtil {
     }
 
     /**
-     * BiFucntion demo，该function能接收多个参数
+     * BiFunction demo，该function能接收多个参数
      *
      * @param a
      * @param b
@@ -58,7 +58,7 @@ public class StreamUtil {
      * @return
      */
     public static int compute(int a, int b, BiFunction<Integer, Integer, Integer> biFunction, Function<Integer, Integer> function) {
-        return biFunction.andThen(function).apply(10, 20);
+        return biFunction.andThen(function).apply(a, b);
     }
 
     public static void main(String[] args) {
