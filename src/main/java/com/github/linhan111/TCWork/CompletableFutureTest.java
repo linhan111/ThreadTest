@@ -62,5 +62,6 @@ public class CompletableFutureTest {
             e.printStackTrace();
         }
         System.out.println("耗时：" + (System.currentTimeMillis() - startTime));
+        // 注意下thenCompose与thenCombine两个方法的区别
     }
 }
