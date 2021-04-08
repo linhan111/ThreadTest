@@ -48,4 +48,5 @@ public class OtherCompletableFutureTest {
         CompletableFuture.allOf(future1, future2).get();
         System.out.println("耗时：" + (System.currentTimeMillis() - startTime));
     }
+
 }
