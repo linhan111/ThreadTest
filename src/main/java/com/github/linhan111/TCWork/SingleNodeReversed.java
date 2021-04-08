@@ -1,8 +1,5 @@
 package com.github.linhan111.TCWork;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-
 /**
  * SingleNodeReversed
  * 单链表反转：https://www.cnblogs.com/keeya/p/9218352.html，https://blog.csdn.net/guyuealian/article/details/51119499
